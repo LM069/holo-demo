@@ -2,34 +2,41 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <title>FinTech AR-Hologramm</title>
+  <title>FinTech AR–Debug</title>
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.3.2/aframe/build/aframe-ar.js"></script>
-  <style> body, html { margin:0; overflow:hidden; height:100%; } </style>
+  <style> body,html{margin:0;overflow:hidden;height:100%} </style>
 </head>
 <body>
   <a-scene
     embedded
-    vr-mode-ui="enabled: false"
-    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+    vr-mode-ui="enabled:false"
+    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: true;"
   >
+    <!-- Ambient Light, damit Dein Modell leuchtet -->
+    <a-entity light="type: ambient; color: #fff; intensity: 1"></a-entity>
+
+    <!-- Marker-Pattern -->
     <a-marker
       type="pattern"
-      url="qr.patt"
+      url="pattern-qr.patt"
       smooth="true"
       smoothCount="10"
       smoothTolerance="0.01"
       smoothThreshold="5"
     >
+      <!-- Dein 3D-Text -->
       <a-entity
-        gltf-model="fintech-forum-text.glb"
+        gltf-model="url(fintech-forum-text.glb)"
         scale="0.5 0.5 0.5"
         rotation="-90 0 0"
         position="0 0 0"
-        animation__rotate="property: rotation; to: -90 360 0; loop: true; dur: 8000"
+        animation__rotate="property: rotation; to: -90 360 0; loop:true; dur:8000"
       ></a-entity>
     </a-marker>
+
+    <!-- Kamera -->
     <a-entity camera></a-entity>
   </a-scene>
 </body>
-</html>
+</html>‚
